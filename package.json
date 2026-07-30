@@ -1,0 +1,41 @@
+{
+  "name": "@matchory/template-typescript",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Matchory TypeScript library template.",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "check": "tsc --noEmit",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint && eslint",
+    "lint:ci": "oxlint --format github && eslint --stats",
+    "style:verify": "matchory-coding-style verify --strict",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@matchory/coding-style": "^0.1.2",
+    "@types/node": "^26.1.1",
+    "eslint": "^10.0.0",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
