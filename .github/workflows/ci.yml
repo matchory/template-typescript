@@ -32,8 +32,11 @@ jobs:
             run: pnpm test
           - name: Build
             run: pnpm run build
+          # minimatch <11.0.1 (GHSA-g3hv-75wg-m249, moderate ReDoS) is reached only through the lint
+          # toolchain (@matchory/coding-style > typescript-eslint), which requires minimatch ^10 while
+          # the only patched release is 11. Accepted knowingly; drop this exclusion once the chain updates.
           - name: Dependency audit
-            run: pnpm audit
+            run: pnpm audit --ignore GHSA-g3hv-75wg-m249
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
